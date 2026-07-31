@@ -23,22 +23,18 @@ const T = {
       {
         k: "الهواء والانبعاثات",
         d: "رصد جودة الهواء، قياس الانبعاثات والضجيج، نمذجة الانتشار",
-        z: "+15 m",
       },
       {
         k: "المبنى والأنظمة",
         d: "تكييف وتبريد، إصحاح، أنظمة ميكانيكية، مكافحة الآفات",
-        z: "+6 m",
       },
       {
         k: "سطح الموقع",
         d: "التصاميم الهندسية، الإشراف، إدارة المشاريع والمقاولات",
-        z: "±0.00",
       },
       {
         k: "التربة والمياه الجوفية",
         d: "تقييم الأثر البيئي، إدارة النفايات، المياه العادمة",
-        z: "−18 m",
       },
     ],
     svcLabel: "الخدمات",
@@ -144,22 +140,18 @@ const T = {
       {
         k: "Air & emissions",
         d: "Air quality monitoring, emissions and noise measurement, dispersion modelling",
-        z: "+15 m",
       },
       {
         k: "Building & systems",
         d: "HVAC and refrigeration, sanitation, mechanical systems, pest control",
-        z: "+6 m",
       },
       {
         k: "Site surface",
         d: "Engineering design, site supervision, project and contract management",
-        z: "±0.00",
       },
       {
         k: "Soil & groundwater",
         d: "Environmental impact assessment, waste management, wastewater",
-        z: "−18 m",
       },
     ],
     svcLabel: "Services",
@@ -370,8 +362,11 @@ function ZoneStrip({ t }) {
     <ul className="am-zones">
       {t.strata.map((s, i) => (
         <li key={i} className={"am-zone-i am-lg-" + i} style={{ animationDelay: 520 + i * 90 + "ms" }}>
-          <span className="am-zone-z">{s.z}</span>
-          <span className="am-zone-k">{s.k}</span>
+          <span className="am-zone-k">
+            <i aria-hidden="true" />
+            {s.k}
+          </span>
+          <span className="am-zone-d">{s.d}</span>
         </li>
       ))}
     </ul>
@@ -519,12 +514,13 @@ export default function AlMadaSite() {
 .am-zones{list-style:none; margin:clamp(46px,7vw,76px) 0 0; padding:0;
   display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line);
   border-block:1px solid var(--line);}
-.am-zone-i{position:relative; background:var(--paper); padding:20px 20px 20px 0; display:flex;
-  flex-direction:column; gap:5px; opacity:0; animation:amfade .9s ease forwards;}
-.am-rtl .am-zone-i{padding:20px 0 20px 20px;}
-.am-zone-z{font-family:var(--data); font-size:12px; font-weight:500; color:var(--lc);
-  direction:ltr; unicode-bidi:isolate;}
-.am-zone-k{font-size:14.5px; font-weight:500; color:var(--abyss); line-height:1.4;}
+.am-zone-i{position:relative; background:var(--paper); display:flex; flex-direction:column; gap:9px;
+  padding:22px 24px 22px 0; opacity:0; animation:amfade .9s ease forwards;}
+.am-rtl .am-zone-i{padding:22px 0 22px 24px;}
+.am-zone-k{display:flex; align-items:center; gap:10px; font-size:15px; font-weight:600;
+  color:var(--abyss); line-height:1.4;}
+.am-zone-k i{width:7px; height:7px; border-radius:50%; background:var(--lc); flex:none;}
+.am-zone-d{font-size:12.5px; color:var(--mute); line-height:1.65;}
 @keyframes amfade{to{opacity:1;}}
 
 /* ---- generic section ---- */
