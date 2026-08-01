@@ -237,7 +237,7 @@ const T = {
 
 const PHONE = "+962 79 002 7774";
 const PHONE_RAW = "+962790027774";
-const EMAIL = "info@almada-consult.com";
+const EMAIL = "info@almada-almutaqaddim.com";
 const SITE = "almada-almutaqaddim.com";
 
 /* one colour per zone, ordered building → surface → subsurface */
