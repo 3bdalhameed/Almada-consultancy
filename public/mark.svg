@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 122" role="img" aria-label="المدى المتقدم">
+  <defs>
+    <linearGradient id="amRing" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#1A7D7E"/>
+      <stop offset=".42" stop-color="#3E9A7C"/>
+      <stop offset=".72" stop-color="#8FB68C"/>
+      <stop offset="1" stop-color="#C6C58A"/>
+    </linearGradient>
+    <linearGradient id="amSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2C8A86"/>
+      <stop offset="1" stop-color="#17696E"/>
+    </linearGradient>
+    <clipPath id="amField">
+      <path d="M60 14 L103 37 L103 85 L60 108 L17 85 L17 37 Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- white field inside the ring -->
+  <path d="M60 14 L103 37 L103 85 L60 108 L17 85 L17 37 Z" fill="#FFFFFF"/>
+
+  <g clip-path="url(#amField)">
+    <!-- skyline -->
+    <g fill="url(#amSky)">
+      <rect x="22" y="60" width="9" height="26"/>
+      <rect x="33.5" y="47" width="11" height="39"/>
+      <rect x="46.5" y="35" width="10" height="51"/>
+      <rect x="58.5" y="43" width="7" height="43"/>
+      <rect x="67.5" y="39" width="12" height="47"/>
+    </g>
+    <rect x="50.6" y="21" width="1.8" height="15" fill="#17696E"/>
+    <g fill="#BABB7F">
+      <rect x="81" y="47" width="9" height="39"/>
+      <rect x="92" y="53" width="7" height="33"/>
+    </g>
+
+    <!-- windows -->
+    <g fill="#FFFFFF" opacity=".85">
+      <rect x="35.5" y="52" width="7" height="1.6"/>
+      <rect x="35.5" y="57" width="7" height="1.6"/>
+      <rect x="35.5" y="62" width="7" height="1.6"/>
+      <rect x="35.5" y="67" width="7" height="1.6"/>
+      <rect x="48.5" y="40" width="6" height="1.6"/>
+      <rect x="48.5" y="45" width="6" height="1.6"/>
+      <rect x="48.5" y="50" width="6" height="1.6"/>
+      <rect x="48.5" y="55" width="6" height="1.6"/>
+      <rect x="48.5" y="60" width="6" height="1.6"/>
+      <rect x="69.5" y="44" width="8" height="1.6"/>
+      <rect x="69.5" y="49" width="8" height="1.6"/>
+      <rect x="69.5" y="54" width="8" height="1.6"/>
+      <rect x="69.5" y="59" width="8" height="1.6"/>
+      <rect x="83" y="54" width="5" height="1.6"/>
+      <rect x="83" y="59" width="5" height="1.6"/>
+      <rect x="83" y="64" width="5" height="1.6"/>
+    </g>
+
+    <!-- ground: two green sweeps with a white road curving between them.
+         The slope sits low on the left and rises to the right, matching the artwork. -->
+    <path d="M8 89 C 40 80, 76 72, 114 65 L114 122 L8 122 Z" fill="#5EA07F"/>
+    <path d="M8 99 C 42 89, 78 80, 114 73 L114 79 C 80 86, 44 95, 8 106 Z" fill="#FFFFFF"/>
+    <path d="M8 106 C 44 95, 80 86, 114 79 L114 122 L8 122 Z" fill="#2E8A66"/>
+  </g>
+
+  <!-- gradient ring -->
+  <path d="M60 7 L109 34 L109 88 L60 115 L11 88 L11 34 Z"
+        fill="none" stroke="url(#amRing)" stroke-width="9" stroke-linejoin="round"/>
+</svg>

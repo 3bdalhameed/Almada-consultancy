@@ -34,30 +34,31 @@ const T = {
       },
     ],
     svcLabel: "الخدمات",
+    svcTitle: "خمس غايات مسجّلة رسمياً",
     svcNote:
       "غاياتنا مرخّصة في السجل التجاري الأردني، ونعمل ضمنها حصراً. كل خدمة أدناه موسومة بالنطاق الذي تعمل فيه.",
     zoneLabel: "النطاق",
     services: [
       {
-        zone: 3,
+        zone: 2,
         t: "الدراسات والاستشارات البيئية",
         d: "تقييم الأثر البيئي (EIA)، التدقيق البيئي، خطط الإدارة البيئية، برامج الرصد، وملفات الامتثال للجهات الرقابية.",
         tags: ["تقييم الأثر البيئي", "التدقيق البيئي", "خطط الإدارة", "الرصد الدوري"],
       },
       {
-        zone: 2,
+        zone: 1,
         t: "الاستشارات والتصاميم الهندسية",
         d: "التصميم التفصيلي، المخططات التنفيذية، جداول الكميات والمواصفات، ومراجعة تصاميم الغير.",
         tags: ["التصميم التفصيلي", "جداول الكميات", "المواصفات", "مراجعة التصاميم"],
       },
       {
-        zone: 2,
+        zone: 1,
         t: "إدارة المشاريع الهندسية",
         d: "إدارة العقود والجداول الزمنية، ضبط الكلفة والجودة، الإشراف الموقعي، وتقارير التقدّم للمالك.",
         tags: ["إدارة العقود", "الجدولة", "الإشراف", "ضبط الكلفة"],
       },
       {
-        zone: 1,
+        zone: 0,
         t: "الأنظمة الميكانيكية والإصحاح",
         d: "هندسة تكييف الهواء والتبريد، أنظمة الإصحاح والتهوية، ومكافحة الآفات للمنشآت الصناعية والصحية.",
         tags: ["تكييف وتبريد", "التهوية", "الإصحاح", "مكافحة الآفات"],
@@ -91,6 +92,7 @@ const T = {
       "المستودعات وسلاسل التبريد",
     ],
     aboutLabel: "من نحن",
+    aboutTitle: "شركة واحدة، على جانبَي الملف",
     aboutBody:
       "معظم المشاريع تُوزَّع بين مكتب بيئي ومكتب هندسي، فتضيع المسؤولية في المنتصف. المدى المتقدم شركة ذات مسؤولية محدودة مسجّلة في الأردن تجمع الغايتين في جهة واحدة: نُعدّ الدراسة البيئية، ونصمم الحل الهندسي الذي تتطلبه، وندير تنفيذه، ونتابع الملف حتى الموافقة النهائية. جهة واحدة مسؤولة، ومرجع واحد للمالك.",
     factsTitle: "بطاقة الشركة",
@@ -132,10 +134,6 @@ const T = {
     ctaAlt: "See the services",
     strata: [
       {
-        k: "Air & emissions",
-        d: "Air quality monitoring, emissions and noise measurement, dispersion modelling",
-      },
-      {
         k: "Building & systems",
         d: "HVAC and refrigeration, sanitation, mechanical systems, pest control",
       },
@@ -155,25 +153,25 @@ const T = {
     zoneLabel: "Zone",
     services: [
       {
-        zone: 3,
+        zone: 2,
         t: "Environmental studies & consulting",
         d: "Environmental impact assessment (EIA), environmental audits, management plans, monitoring programmes, and regulatory compliance files.",
         tags: ["EIA", "Environmental audit", "Management plans", "Monitoring"],
       },
       {
-        zone: 2,
+        zone: 1,
         t: "Engineering consulting & design",
         d: "Detailed design, construction drawings, bills of quantities and specifications, and third-party design review.",
         tags: ["Detailed design", "BoQ", "Specifications", "Design review"],
       },
       {
-        zone: 2,
+        zone: 1,
         t: "Engineering project management",
         d: "Contract and schedule management, cost and quality control, site supervision, and owner progress reporting.",
         tags: ["Contracts", "Scheduling", "Supervision", "Cost control"],
       },
       {
-        zone: 1,
+        zone: 0,
         t: "Mechanical & sanitation systems",
         d: "HVAC and refrigeration engineering, sanitation and ventilation systems, and pest control for industrial and healthcare facilities.",
         tags: ["HVAC", "Refrigeration", "Ventilation", "Pest control"],
@@ -242,43 +240,17 @@ const PHONE_RAW = "+966540957977";
 const EMAIL = "info@almada-consult.com";
 const SITE = "www.almada-consult.com";
 
-/* ---------- brand mark (vector stand-in for the supplied logo) ---------- */
+/* one colour per zone, ordered building → surface → subsurface */
+const ZONE_COLOURS = ["var(--sprout)", "var(--leaf)", "var(--petrol)"];
+/* the sector strip just cycles the palette; it carries no zone meaning */
+const SECTOR_COLOURS = ["var(--ochre)", ...ZONE_COLOURS];
+
+/* ---------- brand mark ----------
+   public/mark.png is the hexagon cropped square out of the supplied lockup
+   (public/Almad.png), which also carries the wordmark and tagline. The name is
+   set in live text beside it, so only the mark is used here. */
 function Mark({ size = 40 }) {
-  return (
-    <svg viewBox="0 0 120 132" width={size} height={(size * 132) / 120} aria-hidden="true">
-      <defs>
-        <linearGradient id="amg" x1="0" y1="1" x2="1" y2="0">
-          <stop offset="0%" stopColor="#0F5A66" />
-          <stop offset="48%" stopColor="#2E8A66" />
-          <stop offset="100%" stopColor="#C79A45" />
-        </linearGradient>
-        <clipPath id="amclip">
-          <path d="M60 12 L106 38 L106 92 L60 118 L14 92 L14 38 Z" />
-        </clipPath>
-      </defs>
-      <path
-        d="M60 6 L112 35 L112 95 L60 124 L8 95 L8 35 Z"
-        fill="none"
-        stroke="url(#amg)"
-        strokeWidth="9"
-        strokeLinejoin="round"
-      />
-      <g clipPath="url(#amclip)">
-        <g fill="#1A5570">
-          <rect x="27" y="66" width="13" height="26" />
-          <rect x="43" y="50" width="14" height="42" />
-        </g>
-        <g fill="#0F5A66">
-          <rect x="60" y="38" width="11" height="54" />
-          <rect x="63.5" y="22" width="2.6" height="18" />
-          <rect x="74" y="48" width="13" height="44" />
-        </g>
-        <rect x="90" y="60" width="9" height="32" fill="#C79A45" />
-        <path d="M8 104 C 40 80 80 70 116 60 C 96 96 52 112 8 108 Z" fill="#6FA84F" opacity=".9" />
-        <path d="M8 110 C 44 92 82 84 116 72 C 92 106 50 118 8 114 Z" fill="#2E8A66" />
-      </g>
-    </svg>
-  );
+  return <img className="am-mark" src="/mark.svg" alt="" width={size} height={size} />;
 }
 
 /* ---------- scroll reveal ---------- */
@@ -421,10 +393,13 @@ export default function AlMadaSite() {
 .am-hdr{position:sticky; top:0; z-index:50; background:rgba(241,244,239,.82);
   backdrop-filter:blur(14px) saturate(1.2); border-bottom:1px solid var(--line);}
 .am-hdr-in{display:flex; align-items:center; gap:20px; height:76px;}
-.am-logo{display:flex; align-items:center; gap:12px;}
-.am-logo-txt{display:flex; flex-direction:column; line-height:1.2;}
-.am-logo-txt b{font-family:var(--display); font-size:17px; font-weight:700; color:var(--petrol);}
-.am-logo-txt span{font-size:10.5px; color:var(--leaf); letter-spacing:.02em;}
+.am-mark{display:block; flex:none; object-fit:contain;
+  transition:transform .32s cubic-bezier(.2,.7,.3,1);}
+.am-logo{display:flex; align-items:center; gap:13px;}
+.am-logo:hover .am-mark{transform:scale(1.07);}
+.am-logo-txt{display:flex; flex-direction:column; line-height:1.25; gap:1px;}
+.am-logo-txt b{font-family:var(--display); font-size:18.5px; font-weight:700; color:var(--petrol);}
+.am-logo-txt span{font-size:11px; color:var(--leaf); letter-spacing:.02em;}
 .am-nav{display:flex; gap:4px; margin-inline-start:auto; font-size:14px; color:var(--mute);}
 .am-nav a{position:relative; padding:8px 12px; border-radius:3px; transition:color .2s, background .2s;}
 .am-nav a::after{content:""; position:absolute; inset-inline:12px; bottom:3px; height:1.5px;
@@ -443,7 +418,7 @@ export default function AlMadaSite() {
 
 /* ---- hero ---- */
 .am-hero{position:relative; isolation:isolate; overflow:hidden;
-  padding:clamp(64px,10vw,124px) 0 clamp(56px,8vw,96px);
+  padding:clamp(30px,4.5vw,56px) 0 clamp(56px,8vw,96px);
   background:linear-gradient(180deg,#F8FAF6 0%,var(--paper) 52%);}
 .am-hero-in{position:relative;}
 .am-hero-in .am-eyebrow,.am-hero-in .am-h1,.am-hero-in .am-lede,.am-hero-in .am-btns{
@@ -503,11 +478,10 @@ export default function AlMadaSite() {
 @keyframes amsway{to{transform:translate3d(1.6%,12px,0);}}
 
 /* ---- the four scopes, air down to groundwater ---- */
-.am-lg-0{--lc:var(--ochre);} .am-lg-1{--lc:var(--sprout);}
-.am-lg-2{--lc:var(--leaf);}  .am-lg-3{--lc:var(--petrol);}
+.am-lg-0{--lc:var(--sprout);} .am-lg-1{--lc:var(--leaf);} .am-lg-2{--lc:var(--petrol);}
 .am-zones{list-style:none; margin:clamp(46px,7vw,76px) 0 0; padding:0;
-  display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line);
-  border-block:1px solid var(--line);}
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1px;
+  background:var(--line); border-block:1px solid var(--line);}
 .am-zone-i{position:relative; background:var(--paper); display:flex; flex-direction:column; gap:9px;
   padding:22px 24px 22px 0; opacity:0; animation:amfade .9s ease forwards;}
 .am-rtl .am-zone-i{padding:22px 0 22px 24px;}
@@ -619,7 +593,6 @@ export default function AlMadaSite() {
   .am-cards{grid-template-columns:1fr 1fr;}
   .am-cards .am-card{grid-column:auto;}
   .am-sectors{grid-template-columns:1fr 1fr;}
-  .am-zones{grid-template-columns:1fr 1fr;}
 }
 @media (max-width:900px){
   .am-nav{display:none;}
@@ -655,7 +628,7 @@ export default function AlMadaSite() {
       <header className="am-hdr">
         <div className="am-wrap am-hdr-in">
           <a href="#top" className="am-logo">
-            <Mark size={38} />
+            <Mark size={46} />
             <span className="am-logo-txt">
               <b>{t.brand}</b>
               <span>{t.brandSub}</span>
@@ -714,20 +687,26 @@ export default function AlMadaSite() {
             <h2 className="am-h2">{t.svcTitle}</h2>
             <p className="am-note">{t.svcNote}</p>
             <div className="am-cards">
-              {t.services.map((s, i) => (
+              {t.services.map((s, i) => {
+                /* a service names the zone it works in; if the copy for that zone
+                   is missing in this language, drop the tag rather than the page */
+                const zone = t.strata[s.zone];
+                return (
                 <article
                   className="am-card"
                   key={s.t}
                   data-rv
                   style={{
                     transitionDelay: i * 70 + "ms",
-                    "--zone": ["var(--ochre)", "var(--sprout)", "var(--leaf)", "var(--petrol)"][s.zone],
+                    "--zone": ZONE_COLOURS[s.zone] || "var(--line)",
                   }}
                 >
-                  <span className="am-zone">
-                    <i />
-                    {t.strata[s.zone].k}
-                  </span>
+                  {zone && (
+                    <span className="am-zone">
+                      <i />
+                      {zone.k}
+                    </span>
+                  )}
                   <h3 className="am-card-t">{s.t}</h3>
                   <p className="am-card-d">{s.d}</p>
                   <div className="am-tags">
@@ -738,7 +717,8 @@ export default function AlMadaSite() {
                     ))}
                   </div>
                 </article>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>
@@ -773,7 +753,7 @@ export default function AlMadaSite() {
                   data-rv
                   style={{
                     transitionDelay: i * 45 + "ms",
-                    "--zone": ["var(--ochre)", "var(--sprout)", "var(--leaf)", "var(--petrol)"][i % 4],
+                    "--zone": SECTOR_COLOURS[i % SECTOR_COLOURS.length],
                   }}
                 >
                   {s}
@@ -794,7 +774,7 @@ export default function AlMadaSite() {
               </div>
               <div className="am-facts" data-rv>
                 <div className="am-facts-h">
-                  <Mark size={30} />
+                  <Mark size={34} />
                   <b>{t.factsTitle}</b>
                 </div>
                 {t.facts.map(([k, v], i) => (
@@ -816,7 +796,7 @@ export default function AlMadaSite() {
             <div className="am-contact">
               <div>
                 <div className="am-person">
-                  <Mark size={34} />
+                  <Mark size={42} />
                   <span>
                     <b>{t.contactPerson}</b>
                     <span>{t.contactRole}</span>
