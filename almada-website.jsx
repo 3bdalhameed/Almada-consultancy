@@ -104,7 +104,7 @@ const T = {
     ],
     ctaLabel: "تواصل",
     ctaTitle: "أرسل تفاصيل مشروعك، ونعود إليك بنطاق عمل واضح.",
-    contactPerson: "بشير المصري",
+    contactPerson: "بشير احمد",
     contactRole: "الشريك المدير · جهة الاتصال",
     lPhone: "الهاتف",
     lEmail: "البريد الإلكتروني",
@@ -217,7 +217,7 @@ const T = {
     ],
     ctaLabel: "Contact",
     ctaTitle: "Send us the project details and we'll come back with a clear scope of work.",
-    contactPerson: "Basheer Almasri",
+    contactPerson: "Basheer Ahmad",
     contactRole: "Managing Partner · Point of contact",
     lPhone: "Phone",
     lEmail: "Email",
@@ -235,8 +235,8 @@ const T = {
   },
 };
 
-const PHONE = "+966 54 095 7977";
-const PHONE_RAW = "+966540957977";
+const PHONE = "+962 79 002 7774";
+const PHONE_RAW = "+962790027774";
 const EMAIL = "info@almada-consult.com";
 const SITE = "www.almada-consult.com";
 
@@ -246,11 +246,10 @@ const ZONE_COLOURS = ["var(--sprout)", "var(--leaf)", "var(--petrol)"];
 const SECTOR_COLOURS = ["var(--ochre)", ...ZONE_COLOURS];
 
 /* ---------- brand mark ----------
-   public/mark.png is the hexagon cropped square out of the supplied lockup
-   (public/Almad.png), which also carries the wordmark and tagline. The name is
-   set in live text beside it, so only the mark is used here. */
+   public/mark.png is the hexagon on its own. The company name is set in live
+   text beside it so it stays translatable, so the mark carries no wordmark. */
 function Mark({ size = 40 }) {
-  return <img className="am-mark" src="/mark.svg" alt="" width={size} height={size} />;
+  return <img className="am-mark" src="/mark.png" alt="" width={size} height={size} />;
 }
 
 /* ---------- scroll reveal ---------- */
