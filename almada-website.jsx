@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 /* ============================================================
    المدى المتقدم للاستشارات البيئية والهندسية
    Al-Mada Al-Mutaqaddim for Environmental & Engineering Consulting
-   Amman, Jordan  ·  www.almada-consult.com
+   Amman, Jordan  ·  almada-almutaqaddim.com
    ============================================================ */
 
 const T = {
@@ -238,7 +238,7 @@ const T = {
 const PHONE = "+962 79 002 7774";
 const PHONE_RAW = "+962790027774";
 const EMAIL = "info@almada-consult.com";
-const SITE = "www.almada-consult.com";
+const SITE = "almada-almutaqaddim.com";
 
 /* one colour per zone, ordered building → surface → subsurface */
 const ZONE_COLOURS = ["var(--sprout)", "var(--leaf)", "var(--petrol)"];
